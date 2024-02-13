@@ -16,6 +16,10 @@ all_posts = [
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
             ex perferendis doloremque fugit consectetur.
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
+            ex perferendis doloremque fugit consectetur.
             """
     },
     {
@@ -25,8 +29,10 @@ all_posts = [
         "date": date(2022, 8 , 12),
         "title": "Coding is fun",
         "excert": "Coding is one of the most fun activites that you can learn things from.",
-        "content": 
-            """
+        "content": """Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
+            ex perferendis doloremque fugit consectetur.
+            
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
             ex perferendis doloremque fugit consectetur.
@@ -41,6 +47,10 @@ all_posts = [
         "excert": "A very nice activity that can connect you to nature in one of the most entairtaning ways.",
         "content": 
             """
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
+            ex perferendis doloremque fugit consectetur.
+            
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             Reprehenderit laborum cumque vel sint corporis veniam obcaecati quasi impedit eius alias aspernatur magni nisi iure praesentium, 
             ex perferendis doloremque fugit consectetur.
@@ -63,7 +73,7 @@ def posts(request):
     return render(request, "blog/all-posts.html", { "posts": all_posts })
 
 def post_detail(request, slug):
-    post = next(post for post in all_posts if post['slug'] == slug)
+    identified_post = next(post for post in all_posts if post['slug'] == slug)
     return render(request, "blog/post-detail-page.html", {
-        "post": post
+        "post": identified_post
     })
