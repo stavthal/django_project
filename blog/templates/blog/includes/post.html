@@ -2,15 +2,12 @@
 
 <li>
   <article class="post">
-    <a href="{% url "post_detail" "the-mountains" %}"> {% comment "" %} Here we add the name of the url that we have set{% endcomment %}
-      <img src="{% static "blog/images/mountains.jpg" %}" alt="Mountain Hiking"
-      />
+    <a href="{% url "post_detail" post.slug %}"> {% comment "" %} Here we add the name of the url that we have set{% endcomment %}
+      <img src="{% static 'blog/images/'|add:post.image %}" alt={{ post.slug}} />
       <div class="post__content">
-        <h3>Mountain Hiking</h3>
+        <h3>{{ post.title }}</h3>
         <p>
-          There's nothing like the views you get when hiking in the mountains!
-          And I wasn't even prepared for what happened whilst I was enjoying the
-          view!
+          {{ post.content | slice:":100" }}...{% comment "" %} Here we slice the content to 100 characters{% endcomment %}
         </p>
       </div>
     </a>
