@@ -73,3 +73,14 @@
     font-size: 1.5rem;
     color: #353535;
   }
+
+
+  @media (max-width: 768px) {
+    /* CSS rules for screens 768px wide and below */
+    #latest-posts {
+      width: 70% !important;
+      margin: 4rem auto; 
+    }
+
+    
+  }

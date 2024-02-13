@@ -8,9 +8,9 @@ body {
   }
   
   #all-posts {
-    margin: 7rem auto;
+    margin: 7rem 3rem;
     width: 90%;
-    max-width: 60rem;
+    max-width: 60rem; 
   }
   
   #all-posts h2 {

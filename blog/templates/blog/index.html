@@ -5,6 +5,7 @@
 {% block title %}My blog{% endblock %}
 
 {% block stylesheets %}
+<link rel="stylesheet" href={% static "blog/post.css" %} />
 <link rel="stylesheet" href="{% static 'blog/index.css' %}"/>
 {% endblock %}
 
@@ -21,15 +22,9 @@
         <h2>Latest posts</h2>
 
         <ul>
-            <li>
-                <article class="post">
-                    <a href="">
-                        <img src="{% static "blog/images/mountains.jpg" %}" alt="Post title" />
-                        <div class="post__content">
-                            <h3>Post title</h3>
-                            <p>Post excerpt</p>
-                </article>
-            </li>
+            {% for post in posts %}
+                {% include "blog/includes/post.html" %}
+            {% endfor %}
         </ul>
     </section>
 

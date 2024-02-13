@@ -32,8 +32,8 @@ h3 {
 }
 
 #main-navigation li {
-  list-style-type: none;
-  text-decoration: none;
+  list-style-type: none !important;
+  text-decoration: none !important;
   display: inline;
   margin: 2px 20px;
 }
