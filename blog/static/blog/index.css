@@ -62,7 +62,8 @@
     text-align: center;
     padding: 3rem;
     background-color: #e48900;
-    margin-top: 5rem;
+    margin: 5rem 3rem 3rem 0rem;
+    border-radius: 20px;
   }
   
   #about h2 {

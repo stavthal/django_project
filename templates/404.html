@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+
+{% block title %}
+We didn't find that page {{":("}}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static "blog/index.css" %}" />
+{% endblock %}
+
+
+
+{% block content %}
+<section id="error">
+    <h2>We're sorry!</h2>
+    <p>We couldn't find the page you were looking for. Please try again or contact us if you think this is an error.</p>
+</section>
+
+{% endblock %}
