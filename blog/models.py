@@ -10,7 +10,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     tag = models.ManyToManyField('Tag', related_name="posts")
-    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True, related_name="posts")
     last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
