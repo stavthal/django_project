@@ -3,7 +3,9 @@
 <li>
   <article class="post">
     <a href="{% url "post_detail" post.slug %}"> {% comment "" %} Here we add the name of the url that we have set{% endcomment %}
-      <img src="{% static 'blog/images/'|add:post.image %}" alt={{ post.slug}} />
+      {% if post.image %}
+        <img src="{% static 'blog/images/'|add:post.image %}" alt={{ post.slug}} />
+      {% endif %}
       <div class="post__content">
         <h3>{{ post.title }}</h3>
         <p>
