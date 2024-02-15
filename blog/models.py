@@ -9,6 +9,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField()
     tag = models.ManyToManyField('Tag', related_name="posts")
+    author = models.OneToOneField('Author', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
