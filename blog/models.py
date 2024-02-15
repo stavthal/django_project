@@ -8,6 +8,7 @@ class Post(models.Model):
     date = models.DateField()
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField()
+    tag = models.ManyToManyField('Tag', related_name="posts")
 
     def __str__(self):
         return self.title
