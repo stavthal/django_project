@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post, Author, Tag
 
 # Register your models here.
 
@@ -14,6 +14,12 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ("title", "content")
     # add me prefilled fields for the Post
     prepopulated_fields = {"slug": ("title",)}
-    
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ("first_name", "last_name", "email")
+    list_filter = ("last_name",)
+    search_fields = ("first_name", "last_name")
     
 admin.site.register(Post, PostAdmin)
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Tag)
