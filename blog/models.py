@@ -6,11 +6,12 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     excerpt = models.CharField(max_length=200)
     image_name = models.CharField(max_length=100, null=True, blank=True)
-    date = models.DateField(auto_now=True)
+    date = models.DateField(default=None, null=True, blank=True)
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     tag = models.ManyToManyField('Tag', related_name="posts")
-    author = models.OneToOneField('Author', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
+    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title

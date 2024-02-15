@@ -7,6 +7,7 @@ from .models import Post, Author, Tag
 # add me a filter for the PostAdmin
 class PostAdmin(admin.ModelAdmin):
     # add me a filter for the PostAdmin
+    readonly_fields = ("date", "last_updated")
     list_display = ("title", "slug", "date")
     # add me more sections for the PostAdmin
     list_filter = ("date",)
