@@ -21,7 +21,7 @@ body {
   
   #summary h2 {
     color: white;
-    font-size: 4.5rem;
+    font-size: 3.4rem;
   }
   
   #summary article {
@@ -60,3 +60,16 @@ body {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
+
+  #tag {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
