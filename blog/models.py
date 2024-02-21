@@ -13,6 +13,7 @@ class Post(models.Model):
     tag = models.ManyToManyField('Tag', related_name="posts")
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True, related_name="posts")
     last_updated = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to="images/", null=True, blank=True)
 
     def __str__(self):
         return self.title

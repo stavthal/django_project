@@ -20,6 +20,10 @@
         {% if post.image_name %}
             <img src="{% static "blog/images/"|add:post.image_name %}" alt={{post.slug}} />
         {% endif %}
+
+        {% if post.image %}
+            <img src="{{post.image.url}}" alt={{post.slug}} />
+        {% endif %}
         <address>By {{ post.author }} </address> 
         <div>
             Last updated on <time>{{post.last_updated|date:'d M Y'}}</time>
