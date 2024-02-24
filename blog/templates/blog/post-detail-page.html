@@ -33,18 +33,26 @@
 
 <main>
     <p>{{ post.content|linebreaks}}</p>
-    <section id="comments">
-        <h3>Comments</h3>
-        <ul>
-            {% for comment in comments_list %}
-                <li>
-                    <article>
-                        <address>By {{ comment.author }} </address>
-                        <time>{{comment.created_at|date:'d M Y'}}</time>
-                        <p>{{comment.content}}</p>
-                    </article>
-                </li>
-            {% endfor %}
-        </ul>
 </main>
+    
+<div>
+    <form action="/" method="POST">
+        
+    </form>
+</div>    
+    
+<div> id="comments">
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments_list %}
+            <li>
+                <article>
+                    <address>By {{ comment.author }} </address>
+                    <time>{{comment.created_at|date:'d M Y'}}</time>
+                    <p>{{comment.content}}</p>
+                </article>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
