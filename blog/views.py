@@ -28,7 +28,7 @@ class PostsView(ListView):
     context_object_name = "posts"
 
 class PostDetailView(View):
-    def is_stored(self, request, post_id):
+    def is_stored_post(self, request, post_id):
         stored_posts = request.session.get("stored_posts") # Get the stored posts from the session
         if stored_posts is not None: # If there are no stored posts
           is_saved_for_later = post_id in stored_posts # Check if the post is stored for later
@@ -39,14 +39,13 @@ class PostDetailView(View):
       
     def get(self, request, slug):
         post = Post.objects.get(slug=slug)
-        
- 
+
         context = {
           "post": post,
           "post_tags": post.tags.all(),
           "comment_form": CommentForm(),
           "comments": post.comments.all().order_by("-id"),
-          "saved_for_later": self.is_stored(request, post.id)
+          "saved_for_later": self.is_stored_post(request, post.id)
         }
         return render(request, "blog/post-detail-page.html", context)
 
@@ -66,7 +65,7 @@ class PostDetailView(View):
           "post_tags": post.tags.all(),
           "comment_form": comment_form,
           "comments": post.comments.all().order_by("-id"),
-          "is_saved_for_later": self.is_stored(request, post.id)
+          "saved_for_later": self.is_stored_post(request, post.id)
         }
         return render(request, "blog/post-detail-page.html", context)
       
@@ -93,7 +92,7 @@ class ReadLaterView(View):
     if stored_posts is None: # If there are no stored posts
       stored_posts = [] # Set the stored posts to an empty list
       
-    post_id = request.POST["post_id"] # Get the id of the post that the user wants to store
+    post_id = int(request.POST["post_id"]) # Get the id of the post that the user wants to store
     
     if post_id in stored_posts: # If the post is already stored
       stored_posts.remove(post_id)
