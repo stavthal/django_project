@@ -10,12 +10,34 @@
 {% endblock %} 
 
 {% block content %}
+
+
+{% if comment_form.errors %}
+  <div id="alert">
+    <h2>Saving the comment failed</h2>
+    <p>Please check the comment form below the post and fix your errors</p>
+    <a href="#comment-form">Fix!</a>
+  </div>
+{% endif %}
+
 <section id="summary">
   <h2>{{ post.title }}</h2>
   <div>
     {% for tag in post_tags %}
       <span class="tag">{{ tag.caption|title }}</span>
     {% endfor %}
+  </div>
+  <div id="read-later">
+    <form action="{% url "read_later" %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="post_id" value="{{ post.id }}" />
+    <button>
+      {% if is_saved_for_later %}
+        Remove from your reading list
+      {% else %}
+        Save for later
+      {% endif %}
+    </button>
   </div>
   <article>
     {% if post.image_name %}
@@ -57,7 +79,7 @@
         {{ form_field.errors }}
       </div>
     {% endfor %}
-    <button>Save Comment</button>
+    <button type="submits">Save Comment</button>
   </form>
 </section>
 {% endblock %}

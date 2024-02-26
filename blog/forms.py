@@ -11,4 +11,3 @@ class CommentForm(forms.ModelForm):
           "user_email": "Your Email",
           "text": "Your Comment"
         }
-  
