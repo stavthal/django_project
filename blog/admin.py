@@ -21,7 +21,11 @@ class AuthorAdmin(admin.ModelAdmin):
     list_filter = ("last_name",)
     search_fields = ("first_name", "last_name")
     
+# class CommentAdmin(admin.ModelAdmin):
+#     list_display = ("user_name", "post")
+
+    
 admin.site.register(Post, PostAdmin)
-admin.site.register(Author, AuthorAdmin)
+admin.site.register(Author)
 admin.site.register(Tag)
 admin.site.register(Comment)

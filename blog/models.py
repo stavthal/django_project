@@ -10,7 +10,7 @@ class Post(models.Model):
     date = models.DateField(default=None, null=True, blank=True)
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
-    tag = models.ManyToManyField('Tag', related_name="posts")
+    tags = models.ManyToManyField('Tag', related_name="posts")
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True, related_name="posts")
     last_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="images/", null=True, blank=True)
@@ -40,10 +40,8 @@ class Tag(models.Model):
 
 
 class Comment(models.Model):
-    content = models.TextField(validators=[MinLengthValidator(10)])
-    author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='comments')
-    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Comment by {self.author} on {self.post}"
+    user_name = models.CharField(max_length=120)
+    user_email = models.EmailField() 
+    text = models.TextField(max_length=400, blank=False)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")

@@ -1,13 +1,14 @@
 from django import forms
 
-from blog.models import Post
+from .models import Comment
 
-
-class FormPost(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Post
-        exclude = ['post', '']
+        model = Comment
+        exclude = ["post"]
         labels = {
-            "content": "Comment Title",
-            "author": "Your name",
+          "user_name": "Your Name",
+          "user_email": "Your Email",
+          "text": "Your Comment"
         }
+  
